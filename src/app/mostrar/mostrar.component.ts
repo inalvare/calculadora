@@ -16,7 +16,9 @@ export class MostrarComponent implements OnInit{
   ngOnInit(): void {
     this.servicio.disparadorDeServicio.subscribe(data =>{
       console.log(data);
-      this.resultado=data.data;
+      console.log(this.resultado)
+      if (data.data!=0) this.resultado=data.data;
+      else this.resultado="";
     })
   }
 }

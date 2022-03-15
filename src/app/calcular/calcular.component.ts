@@ -1,3 +1,4 @@
+import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ServicioService } from '../servicio.service';
 
@@ -15,38 +16,38 @@ export class CalcularComponent {
   }
 
   calcular={
-    num1:0 ,
-    num2:0
+    num1:"" ,
+    num2:""
   }
 
   suma(): void{
-    this.resultado=this.calcular.num1+this.calcular.num2;
+    this.resultado=parseFloat(this.calcular.num1)+parseFloat(this.calcular.num2);
     this.servicio.disparadorDeServicio.emit({
       data:this.resultado
     })
   }
   restar(): void{
-    this.resultado=this.calcular.num1-this.calcular.num2;
+    this.resultado=parseFloat(this.calcular.num1)-parseFloat(this.calcular.num2);
     this.servicio.disparadorDeServicio.emit({
       data:this.resultado
     })
   }
   multiplicar(): void{
-    this.resultado=(this.calcular.num1)*(this.calcular.num2);
+    this.resultado=parseFloat(this.calcular.num1)*parseFloat(this.calcular.num2);
     this.servicio.disparadorDeServicio.emit({
       data:this.resultado
     })
   }
   dividir(): void{
-    this.resultado=(this.calcular.num1)/(this.calcular.num2);
+    this.resultado=parseFloat(this.calcular.num1)/parseFloat(this.calcular.num2);
     this.servicio.disparadorDeServicio.emit({
       data:this.resultado
     })
   }
   limpiar(): void{
     this.resultado=0;
-    this.calcular.num1=0;
-    this.calcular.num2=0;
+    this.calcular.num1="";
+    this.calcular.num2="";
     this.servicio.disparadorDeServicio.emit({
       data:this.resultado
     })
